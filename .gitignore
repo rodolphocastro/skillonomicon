@@ -1,0 +1,86 @@
+# ---------------------------------------------------------------------------
+# APM (Agent Package Manager)
+# ---------------------------------------------------------------------------
+# Installed dependencies (like node_modules). Restored by `apm install`.
+apm_modules/
+
+# Bundles produced by `apm pack`
+build/
+*.apm.zip
+
+# Per-user / local overrides
+.apm/local/
+*.local.yml
+*.local.yaml
+
+# NOTE: commit apm.yml and apm.lock.yaml (reproducible installs).
+#
+# If you test-install your own package inside this repo, the deployed copies
+# below are generated output. Uncomment the ones you don't want to commit:
+.agents/skills/
+.claude/skills/
+.github/skills/
+.kiro/skills/
+.grok/skills/
+
+# ---------------------------------------------------------------------------
+# macOS
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Icon?
+
+# ---------------------------------------------------------------------------
+# Linux
+# ---------------------------------------------------------------------------
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ---------------------------------------------------------------------------
+# Windows
+# ---------------------------------------------------------------------------
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump
+
+# Windows installer / cab artifacts
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# ---------------------------------------------------------------------------
+# Editors / misc
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+.env
+.env.*
+!.env.example
