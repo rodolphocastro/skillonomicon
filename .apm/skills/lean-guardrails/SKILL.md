@@ -11,8 +11,6 @@ Project-specific guardrails or guidance (be it human or agent focused) should ta
 
 ## Git Conventions
 
-> Keep in mind that project guidelines may override these conventions, if they are present.
-
 - Use "GitHub" flow
   - A single long-lived branch (usually `master` or `main`)
   - Each feature / bugfix / refactor session should have its own branch
@@ -38,14 +36,18 @@ Project-specific guardrails or guidance (be it human or agent focused) should ta
 
 Checks must be executed before any changes are done, to define the baseline, and then executed before changes get committed.
 
+- Dependency and quality tool setup, if needed, happens before the baseline.
+- Manual tests run once, when the work is complete.
+
 Precedence of checks are:
 
 1. Dependencies
-2. Build / Compile checks
-3. Style Checks
-4. Unit tests
-5. Integration tests
-6. Manual tests, by the user
+2. Quality tools
+3. Build / Compile checks
+4. Style Checks
+5. Unit tests
+6. Integration tests
+7. Manual tests, by the user
 
 > Important: Those are only for local development, they may serve as a base for a CI pipeline but might not be enough for production environments or bigger teams.
 
@@ -67,7 +69,7 @@ Step-by-Step:
 3. Ensure that the package manager is available for you to use, if it isn't this check is red
 4. Ensure dependencies can be restored.  If dependencies restore successfully this check is green. If not, this check is red.
 
-> If the technology doesn't have a package manager, dependency manager this check can be skipped.
+> If the technology doesn't have a package manager or dependency manager this check can be skipped.
 
 ### Check if quality tools are defined
 
@@ -76,7 +78,9 @@ If the project doesn't have tools for quality checking defined (or available for
 1. Check if the project has existing tools for quality checking
 2. If there are defined tools: 
    1. Ensure they are available for you to use. 
-   2. If they are not available: this check is red. Otherwise, this check is green.
+   2. If they are not available: this check is red.
+   3. If they are available and none are missing: this check is green, skip the remaining steps.
+   4. If some are missing (e.g. there is a linter but no testing tool), follow the remaining steps for the missing ones only.
 3. Based on the project's languages and frameworks briefly look up what are the "community" default tools
 4. Provide suggestions and question the user for:
    1. Which `linting` tools would they like to use?
@@ -93,8 +97,8 @@ If the project doesn't have tools for quality checking defined (or available for
 
 Run the appropriate build (or equivalent) tool for the project's language and framework. Check the result and decide:
 
-1. No errors / no warnings: this check is green.
-2. No errors / warnings: this check is yellow.
+1. No errors and no warnings: this check is green.
+2. No errors, but warnings: this check is yellow.
 3. Errors: this check is red.
 
 > User gets to decide on addressing, or not, yellow checks. Build errors always must be addressed before moving on to next checks.
@@ -109,7 +113,7 @@ Run the appropriate linting and formatting tools for the project's language and 
 2. No errors, but warnings: this check is yellow.
 3. Errors: this check is red.
 
-Before actually declaring the status check if the tools offer any type of "fix" flag - if they do you may run the `fix` command and re-run the check.
+Before declaring the status, check if the tools offer any type of "fix" flag - if they do you may run the `fix` command, only on files changed during the session, and re-run the check.
 
 > User gets to decide on addressing, or not, yellow checks. Errors always must be addressed before moving on to next checks.
 
