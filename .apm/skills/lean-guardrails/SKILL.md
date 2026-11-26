@@ -5,7 +5,7 @@ description: Use when writing / generating code.
 
 # Lean Guardrails
 
-Work on code locally in a safe and controlled way but without overengineering the workflow.
+Work on code locally in a safe and controlled way, but without overengineering the workflow.
 
 Project-specific guardrails or guidance (be it human or agent focused) should take precedence over the conventions outlined in this skill. 
 
@@ -31,6 +31,26 @@ Project-specific guardrails or guidance (be it human or agent focused) should ta
 - Make sure sensitive files are not committed to the repository
   - e.g. `.env` files that aren't examples; files that may contain API or certificate keys
 
+## Developer Experience
+
+- Make sure there's a single entrypoint for common tasks. Expose setup, run, check and tests commands through the project's task runner
+  - e.g. package.json scripts, Makefile, just
+  - If there isn't one suggest one
+- When you need to spin up infrastructure, prefer `docker compose` or an equivalent
+  - e.g. `podman compose`, `Aspire`
+- Keep local development infrastructure (e.g. databases, queues, mocks) in an override file (or your tool's equivalent)
+  - Follow the project's existing naming; otherwise use `compose.yaml` for production and `compose.override.yaml` for the override
+  - Keep the production file clean and focused on the application you're working on
+  - If there is no production file, scaffold a minimal one.
+  - Prefer using LTS versions where offered, otherwise the latest stable, and pin the tag
+  - Make sure healthchecks and service dependencies are set on their definitions
+- If the project doesn't use `apm` ([Agent Package Manager](https://microsoft.github.io/apm/)) and you're adding or changing skills, MCPs or hooks, suggest it for managing them
+- Keep the `README.md` short: the project's purpose and how to start contributing
+- Document the public elements you add or change, close to the code
+  - Follow the language's conventions, e.g. JSDoc or XML documentation comments
+  - Usually this means public classes and their public members, interfaces, and high-level functions
+- Make sure `.env.example` is always up to date when variables are changed / added or even removed
+  - Have a brief comment describing the purpose of that variable
 
 ## Code Checks
 
