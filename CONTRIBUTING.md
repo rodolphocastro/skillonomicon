@@ -18,7 +18,7 @@ Official docs are available under [apm's own website](https://microsoft.github.i
 
 1. Scaffold a new folder under `.apm/skills` with the name of the new skill
 2. Create a SKILL.md file in that folder
-3. Ensure the frontmatter is present on the new file
+3. Ensure the frontmatter is present on the new file with fields `name` and `description`
 4. Make sure the skill's name, in the frontmatter, matches the folder name
 5. Add a link to the skill's page in the [README.md](README.md) file.
 
@@ -31,8 +31,8 @@ Official docs are available under [apm's own website](https://microsoft.github.i
    2. Minor bump for new features
    3. Hotfix bump for hotfixes
 2. Commit the bump on its own commit (usually with a `chore` convention)
-3. Merge your changes through a Pull Request
-4. Create a new tag `vx.y.z` where `x.y.z` matches the value defined on `apm.yml` on that merge commit.
-5. Create a new release on GitHub with the tag and the new version as title.
+3. Merge your changes through a Pull Request, this will squash the commits but is expected
+4. Create a new tag `vx.y.z` where `x.y.z` matches the value defined on `apm.yml` on the merge commit
+5. Create a new release on GitHub with the tag and the new version as title
 
 > Optionally the tag and the version may be both done through GitHub's web ui.
