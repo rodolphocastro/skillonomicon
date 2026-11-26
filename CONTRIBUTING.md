@@ -20,19 +20,19 @@ Official docs are available under [apm's own website](https://microsoft.github.i
 2. Create a SKILL.md file in that folder
 3. Ensure the frontmatter is present on the new file with fields `name` and `description`
 4. Make sure the skill's name, in the frontmatter, matches the folder name
-5. Add a link to the skill's page in the [README.md](README.md) file.
+5. Add a new row to the skill's table in the [README.md](README.md) file.
 
-> If the skill contains many directives consider splitting it up between a SKILL.MD + `references`, `assets` and `scripts` folders.
+> If the skill contains many directives consider splitting it up between a SKILL.md + `references`, `assets` and `scripts` folders.
 
 ### Publishing Versions
 
-1. Bump the version under [apm.yml](apm.yml) accordingly:
+1. Bump the version in [apm.yml](apm.yml) accordingly:
    1. Major bump for breaking changes
    2. Minor bump for new features
-   3. Hotfix bump for hotfixes
+   3. Patch bump for hotfixes
 2. Commit the bump on its own commit (usually with a `chore` convention)
 3. Merge your changes through a Pull Request, this will squash the commits but is expected
 4. Create a new tag `vx.y.z` where `x.y.z` matches the value defined on `apm.yml` on the merge commit
 5. Create a new release on GitHub with the tag and the new version as title
 
-> Optionally the tag and the version may be both done through GitHub's web ui.
+> Optionally, the tag and the version may be both done through GitHub's web ui.
